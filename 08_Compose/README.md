@@ -6,23 +6,18 @@ Docker Compose
 **Install Compose** 
 
 ```
-sudo wget --no-check-certificate https://github.com/docker/compose/releases/download/1.2.0/docker-compose-`uname -s`-`uname -m`
-
-sudo mv docker-compose-`uname -s`-`uname -m` /usr/local/bin/docker-compose
-
-sudo chmod +x /usr/local/bin/docker-compose
-
-docker-compose --version
+$ sudo wget --no-check-certificate https://github.com/docker/compose/releases/download/1.2.0/docker-compose-`uname -s`-`uname -m`
+$ sudo mv docker-compose-`uname -s`-`uname -m` /usr/local/bin/docker-compose
+$ sudo chmod +x /usr/local/bin/docker-compose
+$ docker-compose --version
 ```
 
 **Install Docker (client)  (if not already installed)** 
 
 ```
-sudo wget --no-check-certificate -O /usr/local/bin/docker https://get.docker.com/builds/Darwin/x86_64/docker-latest
-
-sudo chmod +x /usr/local/bin/docker
-
-docker -v
+$ sudo wget --no-check-certificate -O /usr/local/bin/docker https://get.docker.com/builds/Darwin/x86_64/docker-latest
+$ sudo chmod +x /usr/local/bin/docker
+$ docker -v
 ```
 
 **Canonical Docker-Compose (Python/Redis) example**
@@ -39,7 +34,7 @@ web:
    - .:/code
   links:
    - redis
- redis:
+redis:
   image: redis
 ```
 
@@ -80,33 +75,23 @@ redis
 Commands
 
 ```
-docker-compose up -d
-
-docker-compose ps
-
-docker-compose logs
-
-curl localhost:5000
-
-docker-compose stop
+$ docker-compose up -d
+$ docker-compose ps
+$ docker-compose logs
+$ curl localhost:5000
+$ docker-compose stop
 ```
 
 **Tomcat Sample example**
 
 ```
-docker pull tomcat
-
-docker history tomcat | grep -i expose
-
-cid=$(docker run -d -P tomcat)
-
-docker ps
-
-curl localhost:32xxx 
-
-docker kill $cid
-
-docker rm $cid
+$ docker pull tomcat
+$ docker history tomcat | grep -i expose
+$ cid=$(docker run -d -P tomcat)
+$ docker ps
+$ curl localhost:32xxx 
+$ docker kill $cid
+$ docker rm $cid
 ```
 
 **Now let's Compose it...**
@@ -123,17 +108,12 @@ tomcatapp:
 Commands
 
 ```
-docker-compose -f compose-ex1.yml up -d
-
-docker-compose -f compose-ex1.yml ps
-
-docker-compose -f compose-ex1.yml logs
-
-curl localhost:32xxx 
-
-docker-compose -f compose-ex1.yml stop
-
-docker-compose -f compose-ex1.yml rm
+$ docker-compose -f compose-ex1.yml up -d
+$ docker-compose -f compose-ex1.yml ps
+$ docker-compose -f compose-ex1.yml logs
+$ curl localhost:32xxx 
+$ docker-compose -f compose-ex1.yml stop
+$ docker-compose -f compose-ex1.yml rm
 ```
 
 **Now let's Compose it... (add a sample.war file)**
@@ -141,9 +121,8 @@ docker-compose -f compose-ex1.yml rm
 Figure out where the webapps directory is
 
 ```
-docker run -it tomcat bash 
-
-ls   
+$ docker run -it tomcat bash
+$ ls   
 ```
 
 nginx.conf
@@ -193,7 +172,6 @@ http {
             proxy_set_header   X-Real-IP $remote_addr;
             proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;
             proxy_set_header   X-Forwarded-Host $server_name;
-
         }
     }
 }
@@ -229,22 +207,14 @@ tomcatapp3:
 Commands
 
 ```
-export COMPOSE_FILE=compose-ex2.yml
-
-docker-compose up -d
-
-docker-compose ps 
-
-docker exec composetest_nginx_1 cat /etc/hosts
-
-docker exec composetest_tomcatapp1_1 ip a 
-
-docker exec composetest_tomcatapp2_1 ip a
-
-docker exec composetest_tomcatapp3_1 ip a
-
-curl http://localhost/sample/
-
-docker-compose stop
+$ export COMPOSE_FILE=compose-ex2.yml
+$ docker-compose up -d
+$ docker-compose ps 
+$ docker exec composetest_nginx_1 cat /etc/hosts
+$ docker exec composetest_tomcatapp1_1 ip a 
+$ docker exec composetest_tomcatapp2_1 ip a
+$ docker exec composetest_tomcatapp3_1 ip a
+$ curl http://localhost/sample/
+$ docker-compose stop
 ```
 

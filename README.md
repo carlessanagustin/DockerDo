@@ -1,5 +1,6 @@
 # DockerDo
-##Docker How To Do's
+
+## Docker How To Do's
 
 This is a repository of cheat sheets for doing different things with Docker.  If you are new to Docker I recomend you watch the tutorial videos.  The initial files can be view in any order; however, this is the suggested first list: 
 
@@ -20,7 +21,7 @@ This is a repository of cheat sheets for doing different things with Docker.  If
     * https://www.youtube.com/watch?v=S-fYCOMnsbY
 * [Docker Tutorial 9 - Docker Machine](07_Machine.md)
     * https://www.youtube.com/watch?v=3zXe3uXQnSY
-* [Docker Tutorial 10 - Docker Compose](08_Compose.md)
+* [Docker Tutorial 10 - Docker Compose](08_Compose/)
     * https://www.youtube.com/watch?v=gtoT0By8yh4
 * [Docker Tutorial 11 - Docker Swarm](09_Swarm.md)
     * https://www.youtube.com/watch?v=zTKGfPfhg78
